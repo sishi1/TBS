@@ -9,6 +9,12 @@ public class MouseWorld : MonoBehaviour
     [SerializeField] private LayerMask mousePlaneLayerMask;
 
     private void Awake() {
+        if (instance != null) {
+            Debug.LogError("More than one MouseWorld!" + transform + " - " + instance);
+            Destroy(gameObject);
+            return;
+        }
+
         instance = this;
     }
 
