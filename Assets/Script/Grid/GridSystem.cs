@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,7 +52,7 @@ public class GridSystem {
     }
 }
 
-public struct GridPosition {
+public struct GridPosition : IEquatable<GridPosition> {
     public int x, z;
 
     public GridPosition(int x, int z) {
@@ -62,4 +63,20 @@ public struct GridPosition {
     public override string ToString() {
         return $"x: {x}; z: {z}";
     }
+
+    public static bool operator ==(GridPosition a, GridPosition b) => a.x == b.x && a.z == b.z;
+
+    public static bool operator !=(GridPosition a, GridPosition b) => !(a == b);
+
+    public override bool Equals(object obj) {
+        return obj is GridPosition position &&
+               x == position.x &&
+               z == position.z;
+    }
+
+    public override int GetHashCode() {
+        return HashCode.Combine(x, z);
+    }
+
+    public bool Equals(GridPosition other) => this == other;
 }

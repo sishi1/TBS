@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GridDebugObject : MonoBehaviour
-{
+public class GridDebugObject : MonoBehaviour {
 
     [SerializeField] private TextMeshPro textMeshPro;
 
