@@ -26,7 +26,7 @@ public class UnitActionSystem : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             if (TryHandleUnitSelection()) return;
 
-            selectedUnit.Move(MouseWorld.GetPosition());
+            selectedUnit.GetMoveAction().Move(MouseWorld.GetPosition());
         }
     }
 
@@ -46,7 +46,5 @@ public class UnitActionSystem : MonoBehaviour {
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public Unit GetSelectedUnit() {
-        return selectedUnit;
-    }
+    public Unit GetSelectedUnit() => selectedUnit;
 }
