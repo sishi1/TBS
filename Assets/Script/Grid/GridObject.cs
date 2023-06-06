@@ -32,9 +32,9 @@ public class GridObject {
         unitList.Remove(unit);
     }
 
-    public List<Unit> GetUnitList() {
-        return unitList;
-    }
+    public List<Unit> GetUnitList() => unitList;
+
+    public bool HasAnyUnit() => unitList.Count > 0;
 
 
 }
