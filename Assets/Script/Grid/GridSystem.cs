@@ -56,6 +56,9 @@ public class GridSystem {
         gridPosition.z >= 0 &&
         gridPosition.x < width &&
         gridPosition.z < height;
+
+    public int GetWidth() => width;
+    public int GetHeight() => height;
 }
 
 public struct GridPosition : IEquatable<GridPosition> {
