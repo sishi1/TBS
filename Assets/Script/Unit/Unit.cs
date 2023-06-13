@@ -9,6 +9,7 @@ public class Unit : MonoBehaviour {
     private MoveAction moveAction;
     private SpinAction spinAction;
     private BaseAction[] baseActionArray;
+    [SerializeField] private int actionPoints = 2;
 
     private void Awake() {
         moveAction = GetComponent<MoveAction>();
@@ -35,4 +36,25 @@ public class Unit : MonoBehaviour {
     public GridPosition GetGridPosition() => gridPosition;
 
     public BaseAction[] GetBaseActionArray() => baseActionArray;
+
+    public bool TrySpendActionPointsToTakeAction(BaseAction baseAction) {
+        if (CanSpendActionPointsToTakeAction(baseAction)) {
+            SpendActionPoints(baseAction.GetActionPointsCost());
+            return true;
+        } else 
+            return false;
+    }
+
+    public bool CanSpendActionPointsToTakeAction(BaseAction baseAction) {
+        if (actionPoints >= baseAction.GetActionPointsCost()) 
+            return true;
+        else 
+            return false;
+    }
+
+    private void SpendActionPoints(int amount) {
+        actionPoints -= amount;
+    }
+
+    public int GetActionPoints() => actionPoints;
 }

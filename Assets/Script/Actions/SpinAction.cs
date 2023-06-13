@@ -5,6 +5,7 @@ using UnityEngine;
 
 public  class SpinAction : BaseAction
 {
+    [SerializeField] private int actionCostPoints = 2;
 
     private float totalSpinAmount;
 
@@ -33,6 +34,8 @@ public  class SpinAction : BaseAction
 
         return new List<GridPosition> { unitGridPosition };
     }
+
+    public override int GetActionPointsCost() => actionCostPoints;
 
     public override string GetActionName() => "Spin";
 
