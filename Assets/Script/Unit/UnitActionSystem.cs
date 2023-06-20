@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -36,6 +37,8 @@ public class UnitActionSystem : MonoBehaviour {
     private void Update() {
         if (isBusy) return;
 
+        if (!TurnSystem.Instance.IsPlayerTurn()) return;
+
         // Prevents mouse from doing an action when clicking on the UI button
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
@@ -68,6 +71,8 @@ public class UnitActionSystem : MonoBehaviour {
                 if (raycastHit.transform.TryGetComponent<Unit>(out Unit unit)) {
 
                     if (unit == selectedUnit) return false;
+
+                    if (unit.IsEnemy()) return false;
 
                     SetSelectedUnit(unit);
                     return true;
@@ -106,4 +111,5 @@ public class UnitActionSystem : MonoBehaviour {
     public Unit GetSelectedUnit() => selectedUnit;
 
     public BaseAction GetSelectedAction() => selectedAction;
+
 }
