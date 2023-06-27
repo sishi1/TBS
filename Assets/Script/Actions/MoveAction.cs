@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 
 public class MoveAction : BaseAction {
 
-    private const string IS_WALKING = "IsWalking";
-
-    [SerializeField] Animator unitAnimator;
+    public event EventHandler OnStartMoving;
+    public event EventHandler OnStopMoving;
 
     [SerializeField] private float unitMoveSpeed = 4f;
     [SerializeField] private float unitRotateSpeed = 10f;
@@ -31,9 +30,8 @@ public class MoveAction : BaseAction {
         if (Vector3.Distance(transform.position, targetPosition) > stopDistance) {
             transform.position += moveDirection * unitMoveSpeed * Time.deltaTime;
 
-            unitAnimator.SetBool(IS_WALKING, true);
         } else {
-            unitAnimator.SetBool(IS_WALKING, false);
+            OnStopMoving?.Invoke(this, EventArgs.Empty);
 
             ActionComplete();
         }
@@ -45,6 +43,8 @@ public class MoveAction : BaseAction {
     public  override void TakeAction(GridPosition gridPosition, Action onActionComplete) {
         ActionStart(onActionComplete);
         this.targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+
+        OnStartMoving?.Invoke(this, EventArgs.Empty);
     }
 
     public override List<GridPosition> GetValidActionGridPositionList() {

@@ -13,6 +13,8 @@ public class ShootAction : BaseAction {
         Cooloff,
     }
 
+    public event EventHandler OnShooting;
+
     [SerializeField] private int actionCostPoints = 2;
     [SerializeField] private int maxShootDistance = 7;
     [SerializeField] private float aimRotateSpeed = 10f;
@@ -71,6 +73,8 @@ public class ShootAction : BaseAction {
     }
 
     private void Shoot() {
+        OnShooting?.Invoke(this, EventArgs.Empty);
+
         targetUnit.Damage();
     }
 
