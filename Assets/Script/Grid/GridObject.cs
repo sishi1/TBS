@@ -17,7 +17,7 @@ public class GridObject {
     public override string ToString() {
         string unitString = "";
 
-        foreach(Unit unit in unitList) {
+        foreach (Unit unit in unitList) {
             unitString += unit + "\n";
         }
 
@@ -36,5 +36,6 @@ public class GridObject {
 
     public bool HasAnyUnit() => unitList.Count > 0;
 
+    public Unit GetUnit() => HasAnyUnit() ? unitList[0] : null;
 
 }

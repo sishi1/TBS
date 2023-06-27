@@ -75,10 +75,16 @@ public class Unit : MonoBehaviour {
 
     public GridPosition GetGridPosition() => gridPosition;
 
+    public Vector3 GetWorldPosition() => transform.position;
+
     public BaseAction[] GetBaseActionArray() => baseActionArray;
 
     public int GetActionPoints() => actionPoints;
 
     public bool IsEnemy() => isEnemy;
+
+    public void Damage() {
+        Debug.Log(transform + " damaged!");
+    }
 
 }
