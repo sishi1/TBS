@@ -616,8 +616,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.45395434, y: -0.000000030662626, z: 0.000000015621822, w: 0.89102495}
-  m_LocalPosition: {x: 3.21, y: 11.99999, z: -5.6799917}
+  m_LocalRotation: {x: 0.21338595, y: 0.000000014557957, z: -0.0000000031796983, w: 0.976968}
+  m_LocalPosition: {x: 3.21, y: 4.000004, z: -5.6799917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -868,8 +868,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424493009}
-  m_LocalRotation: {x: 0.45395434, y: -0.000000030662626, z: 0.000000015621822, w: 0.89102495}
-  m_LocalPosition: {x: 3.21, y: 11.99999, z: -5.6799917}
+  m_LocalRotation: {x: 0.21338595, y: 0.000000014557957, z: -0.0000000031796983, w: 0.976968}
+  m_LocalPosition: {x: 3.21, y: 4.000004, z: -5.6799917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -885,6 +885,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1388133226001220338, guid: 4faa37f210e16114797e14158d36bc95,
+        type: 3}
+      propertyPath: unitRotateSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4299830641308174136, guid: 4faa37f210e16114797e14158d36bc95,
         type: 3}
       propertyPath: m_Name
@@ -995,7 +1000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 11.99999, z: -8.719992}
+  m_FollowOffset: {x: 0, y: 4.000004, z: -8.719992}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -3083,6 +3088,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1388133226001220338, guid: 4faa37f210e16114797e14158d36bc95,
+        type: 3}
+      propertyPath: unitRotateSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1419449726083139234, guid: 4faa37f210e16114797e14158d36bc95,
         type: 3}
       propertyPath: actionCostPoints
