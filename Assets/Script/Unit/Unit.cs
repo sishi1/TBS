@@ -13,12 +13,14 @@ public class Unit : MonoBehaviour {
     [SerializeField] private bool isEnemy;
 
     private GridPosition gridPosition;
+    private HealthSystem healthSystem;
     private MoveAction moveAction;
     private SpinAction spinAction;
     private BaseAction[] baseActionArray;
     private int actionPoints = ACTION_POINTS_MAX;
 
     private void Awake() {
+        healthSystem = GetComponent<HealthSystem>();
         moveAction = GetComponent<MoveAction>();
         spinAction = GetComponent<SpinAction>();
         baseActionArray = GetComponents<BaseAction>();
@@ -29,6 +31,12 @@ public class Unit : MonoBehaviour {
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
 
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+        healthSystem.OnDead += HealthSystem_OnDead;
+    }
+
+    private void HealthSystem_OnDead(object sender, EventArgs e) {
+        LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
+        Destroy(gameObject);
     }
 
     private void TurnSystem_OnTurnChanged(object sender, System.EventArgs e) {
@@ -70,6 +78,10 @@ public class Unit : MonoBehaviour {
         OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
     }
 
+    public void Damage(int damageAmount) {
+        healthSystem.Damage(damageAmount);
+    }
+
     public MoveAction GetMoveAction() => moveAction;
     public SpinAction GetSpinAction() => spinAction;
 
@@ -82,9 +94,5 @@ public class Unit : MonoBehaviour {
     public int GetActionPoints() => actionPoints;
 
     public bool IsEnemy() => isEnemy;
-
-    public void Damage() {
-        Debug.Log(transform + " damaged!");
-    }
 
 }
